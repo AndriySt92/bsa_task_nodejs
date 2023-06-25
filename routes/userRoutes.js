@@ -10,10 +10,10 @@ router.get(
   '/',
   (_, res, next) => {
     try {
-      const users = userService.getAllUsers()
+      const users = userService.getAll()
 
       if (!users.length) {
-        res.err = 'Users no found'
+        res.err = 'Users not found'
         res.errCode = 404
       } else {
         res.data = users
@@ -35,7 +35,7 @@ router.post(
   (req, res, next) => {
     try {
       const userData = req.body
-      const user = userService.createUser(userData)
+      const user = userService.create(userData)
       res.data = user
     } catch (e) {
       res.err = e
@@ -53,10 +53,10 @@ router.get(
   (req, res, next) => {
     try {
       const { id } = req.params
-      const user = userService.getUserById(id)
+      const user = userService.getById(id)
 
       if (!user) {
-        res.err = 'User no found'
+        res.err = 'User not found'
         res.errCode = 404
       } else {
         res.data = user
@@ -79,10 +79,10 @@ router.put(
     try {
       const { id } = req.params
       const userInfo = req.body
-      const updatedUser = userService.updateUser(id, userInfo)
-      console.log(updatedUser)
+      const updatedUser = userService.update(id, userInfo)
+      
       if (!updatedUser.id) {
-        res.err = 'User no found'
+        res.err = 'User not found'
         res.errCode = 404
       } else {
         res.data = updatedUser
@@ -103,10 +103,10 @@ router.delete(
   (req, res, next) => {
     try {
       const { id } = req.params
-      const deletedUser = userSice.deleteUser(id)
-
+      const deletedUser = userService.delete(id)
+ 
       if (!deletedUser.length) {
-        res.err = 'User no found'
+        res.err = 'User not found'
         res.errCode = 404
       } else {
         res.data = deletedUser

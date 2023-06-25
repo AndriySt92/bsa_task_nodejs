@@ -1,27 +1,23 @@
 import { userRepository } from '../repositories/userRepository.js'
 
 class UserService {
-  createUser(user) {
+  create(user) {
     return userRepository.create(user)
   }
 
-  getAllUsers() {
+  getAll() {
     return userRepository.getAll()
   }
 
-  getUserById(id) {
+  getById(id) {
     return userRepository.getOne({ id })
   }
 
-  addUser(data) {
-    return userRepository.create(data)
-  }
-
-  updateUser(id, data) {
+  update(id, data) {
     return userRepository.update(id, data)
   }
 
-  deleteUser(id) {
+  delete(id) {
     return userRepository.delete(id)
   }
 
