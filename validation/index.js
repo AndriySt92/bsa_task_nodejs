@@ -28,3 +28,7 @@ export const validatePhone = (phoneNumber) => {
 export const checkIsUniqueEmail = (email, service) => service.search({ email })
 
 export const checkIsUniquePhone = (phoneNumber, service) => service.search({ phoneNumber })
+
+export const validateNumber = (num, min, max) => typeof num === 'number' && num >= min && num <= max
+ 
+export const checkIsUniqueName = (name, service) => service.search({ name })
